@@ -1,24 +1,28 @@
-# README
+# Ruby on Rails Blog Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisites
+- Ruby version 3.1.1
 
-Things you may want to cover:
+## Setup Instructions
 
-* Ruby version
+1. **Install Bundler**
+   Bundler is used to manage Rails projects. Install it by running:
+   gem install bundler
 
-* System dependencies
+2. **Install Project Gems**
+   Navigate to the root directory of the project and run:
+   bundle install
 
-* Configuration
+3. **Run Database Migrations**
+   After the gem installation is complete, set up the database by running:
+   rails db:migrate
 
-* Database creation
+4. **Seed the Database**
+   Populate the categories table with initial data by running:
+   rails db:seed
 
-* Database initialization
+5. **Start the Server**
+   Launch the project on the local server by running:
+   rails s
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The project will be available at http://localhost:3000.
