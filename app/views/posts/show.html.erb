@@ -1,0 +1,27 @@
+<div class="py-5">
+  <div class="mb-5">
+    <%
+=begin%>
+ <%= image_tag @post.image, class: 'single-post-image' %> 
+<%
+=end%>
+    <%= image_tag @post.image.attached? ? url_for(@post.image) : 'default_image.png', class: 'single-post-image' %>
+  </div>
+  <h2 class="title"><%= @post.title %></h2>
+  <p class="subtitle is-6 mb-1">
+    <%= link_to @post.user.username, posts_path(username: @post.user.username) %>
+  </p>
+  <%= link_to @post.category.name, posts_path(category_id: @post.category_id), class: 'tag is-primary' %>
+  <p class="mb-5"><%= @post.created_at.strftime("نشر في %d/%m/%Y") %></p>
+  <p><%= @post.body %></p>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
+    <div class="mt-5 is-flex">
+      <div class="is-3">
+        <%= link_to "تعديل المقال", edit_post_path(@post), class: 'button is-warning' %>
+      </div>
+      <div class="mr-3">
+        <%= button_to "حذف المقال", @post, method: :delete, class: 'button is-danger' %>
+      </div>
+    </div>
+  <% end %>
+</div>

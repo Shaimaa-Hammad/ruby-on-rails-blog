@@ -1,0 +1,45 @@
+<div class="form-container">
+<%= form_with(model: post, html: {class: 'box'}) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <h5 class="is-size-4"> إنشاء مقالة جديدة </h5>
+
+
+  <div class="field">
+    <%= form.label :title, 'عنوان المقال', class: "label" %>
+    <%= form.text_field :title, class: 'input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, 'نص المقال', class: "label" %>
+    <%= form.text_area :body, class: 'input textarea', rows: 10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, 'صورة المقال', class: 'label' %>
+    <%= form.file_field :image, class: 'input' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id, 'تصنيف المقال', class: 'label' %>
+    <div class="select">
+    <%= form.collection_select :category_id, Category.order(:name),:id,:name %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.submit "حفظ", class: 'button is-primary is-fullwidth' %>
+  </div>
+<% end %>
+
+</div>

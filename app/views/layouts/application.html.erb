@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+  <head>
+    <title>RailsBlog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <%= render "layouts/navbar" %>
+  <div class="wrapper">
+  <div class="container pt-5">
+  <% if flash[:notice] %>
+          <div class="notification is-primary">
+            <p class="notice"><%= notice  %></p>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="notification is-danger">
+            <p class="alert"><%= alert  %></p>
+          </div>
+        <% end %>
+    <%= yield %>
+    </div>
+    </div>
+     <footer class="footer py-4">
+      <p class="has-text-centered ">
+        <%= link_to "SheSoft", root_path %>
+      </p>
+    </footer>
+  </body>
+</html>

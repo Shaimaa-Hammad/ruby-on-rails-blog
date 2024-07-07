@@ -1,0 +1,24 @@
+<div class="form-container">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'box' }) do |f| %>
+    <h5 class="is-size-4">غير كلمة المرور</h5>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+    <div class="field">
+      <%= f.label :password, "كلمة المرور الجديد", class: 'label' %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> محارف على الأقل)</em>
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'input' %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "تأكيد كلمة المرور", class: 'label' %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input' %>
+    </div>
+    <div class="actions">
+      <%= f.submit "تغيير كلمة المرور", class: 'button is-primary is-fullwidth' %>
+    </div>
+    <div class="mt-3">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to "مدونتك", root_path, class: "navbar-item title has-text-white mb-0" %>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <%= link_to 'مقال جديد', new_post_path, class: 'button is-light is-small' %>
+            <% if user_signed_in? %>
+              <%= link_to "تعديل ملفي الشخصي", edit_user_registration_path, class: 'button is-link is-small' %>
+              <%= button_to 'تسجيل الخروج', destroy_user_session_path, method: :delete, class: 'button is-danger is-small' %>
+            <% else %>
+              <%= link_to 'تسجيل حساب جديد', new_user_registration_path, class: 'button is-warning is-small' %>
+              <%= link_to 'تسجيل الدخول', user_session_path, class: 'button is-link is-small' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
